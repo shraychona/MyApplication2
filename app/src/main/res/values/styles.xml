@@ -1,0 +1,43 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/green</item>
+        <item name="android:textColorHint">@color/fontLight</item>
+    </style>
+
+    <style name="AppThemeAction" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/green</item>
+        <item name="android:textColorHint">@color/fontLight</item>
+    </style>
+
+
+    <style name="widgets">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/margin_sixteen</item>
+        <item name="android:layout_marginEnd">@dimen/margin_sixteen</item>
+    </style>
+
+    <style name="SellYourStuff">
+        <item name="android:background">@null</item>
+        <item name="android:paddingLeft">@dimen/margin_eight</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:elevation">@dimen/margin_four</item>
+    </style>
+
+
+
+    <style name="AppTheme.Fullscreen">
+
+    </style>
+
+    <color name="grey_0">#8b8b8b</color>
+</resources>

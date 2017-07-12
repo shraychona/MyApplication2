@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="title_activity_display_message">CONTACT US</string>
+    <string name="follow_us">Follow Us</string>
+    <string name="say_hello">Say Hello!</string>
+    <string name="follo_us_quote">And get updates and never miss a deal</string>
+    <string name="sample_text">Sample text Sample text Sample text Sample text</string>
+    <string name="email_hint">Email</string>
+    <string name="content_hint">Content</string>
+    <string name="send_btn">SEND</string>
+    <string name="subject_hint">Subject</string>
+    <string name="what_are_you_selling">What are you selling?</string>
+    <string name="sell_stuff_font_color">#ff000000</string>
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="upload_image_tag">This is your featured photo. Make sure it\'s a good one.!!</string>
+    <string name="details_of_the_ad">Details of the Ad</string>
+    <string name="your_title_should_be_attractive">Your Title Should Be Attractive</string>
+    <string name="upload_from_gallery">Upload From Gallery</string>
+    <string name="take_a_photo">Take a Photo</string>
+    <string name="ad_title">Ad Title</string>
+    <string name="ad_description">Ad Description</string>
+    <string name="catagory">Catagory</string>
+    <string name="price_of_the_item">Price of the Item</string>
+    <string name="your_price_should_be_negotiable">Your price should be negotiable</string>
+    <string name="price">Price</string>
+    <string name="naira">NAIRA</string>
+    <string name="POST">POST</string>
+
+    <string name="proxinoma_regular">font/ProximaRegular.otf</string>
+
+    <string name="action_settings">Settings</string>
+</resources>

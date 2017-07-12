@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingPrefix"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="false"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_menu_white_24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sell Your Stuff"
+            fontPath="font/ProximaRegular.otf"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="@dimen/margin_twenty_four"/>
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ebebeb"
+        tools:context="com.shray.myapplication.ui.SellYourStuff">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_sixteen"
+            android:layout_marginStart="@dimen/margin_sixteen"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_sixteen"
+                android:gravity="center_horizontal"
+                android:text="@string/what_are_you_selling"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/upload_image_tag"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_sixteen"
+                app:cardCornerRadius="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Space
+                        android:id="@+id/space"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:id="@+id/TVUploadGallery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/space"
+                        android:background="@color/green"
+                        android:drawablePadding="@dimen/margin_sixteen"
+                        android:drawableTop="@drawable/ic_fromgallery"
+                        android:gravity="center_horizontal"
+                        android:padding="@dimen/margin_sixteen"
+                        android:text="@string/upload_from_gallery"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignEnd="@+id/space"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/space"
+                        android:background="@android:color/white"
+                        android:drawablePadding="@dimen/margin_sixteen"
+                        android:drawableTop="@drawable/ic_camerapdocut"
+                        android:gravity="center_horizontal"
+                        android:padding="@dimen/margin_sixteen"
+                        android:text="@string/take_a_photo"
+                        android:textColor="@android:color/darker_gray" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/shape_or"
+                        android:padding="12dp"
+                        android:text="OR"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/VPAds"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/margin_sixteen">
+
+            </android.support.v4.view.ViewPager>
+
+            <TextView
+                android:id="@+id/TVAdDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_twenty_four"
+                android:gravity="center_horizontal"
+                android:text="@string/details_of_the_ad"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/your_title_should_be_attractive"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_sixteen"
+                app:cardCornerRadius="8dp">
+
+                <EditText
+                    style="@style/SellYourStuff"
+                    android:hint="@string/ad_title"
+                    android:lines="2" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_sixteen"
+                app:cardCornerRadius="8dp">
+
+                <EditText
+                    style="@style/SellYourStuff"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/ad_description"
+                    android:lines="5" />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="@dimen/margin_sixteen"
+                app:cardCornerRadius="8dp">
+
+                <TextView
+                    android:id="@+id/TVContent"
+                    style="@style/SellYourStuff"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:drawableRight="@drawable/ic_arrow"
+                    android:gravity="center_vertical"
+                    android:hint="@string/catagory" />
+            </android.support.v7.widget.CardView>
+
+
+            <TextView
+                style="@style/SellYourStuff"
+                android:layout_marginTop="@dimen/margin_twenty_four"
+                android:gravity="center"
+                android:hint="@string/price_of_the_item"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/your_price_should_be_negotiable"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_sixteen"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:background="@android:color/transparent"
+                        android:gravity="center_vertical"
+                        android:hint="@string/price"
+                        android:lines="2"
+                        android:inputType="number"
+                        android:padding="@dimen/margin_eight"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/green"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/margin_eight"
+                        android:paddingTop="@dimen/margin_eight"
+                        android:text="@string/naira"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_sixteen"
+                android:layout_marginTop="@dimen/margin_sixteen"
+                app:cardCornerRadius="8dp">
+
+                <Button
+                    style="@style/SellYourStuff"
+                    android:layout_height="@dimen/button_height"
+                    android:background="@color/green"
+                    android:text="@string/POST"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp" />
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

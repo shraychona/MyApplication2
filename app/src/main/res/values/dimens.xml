@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_sides">25dp</dimen>
+    <dimen name="margin_top">15dp</dimen>
+    <dimen name="font_size">18sp</dimen>
+    <dimen name="margin_eight">8dp</dimen>
+    <dimen name="margin_twenty_four">24dp</dimen>
+    <dimen name="margin_sixteen">16dp</dimen>
+    <dimen name="button_height">50dp</dimen>
+    <dimen name="margin_four">4dp</dimen>
+</resources>
