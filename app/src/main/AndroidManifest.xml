@@ -26,11 +26,12 @@
             android:name=".ui.SellYourStuff"
             android:theme="@style/AppTheme" />
         <activity android:name=".ui.ListViewActivity" />
-        <activity android:name=".ui.RecyclerActivity"></activity>
+        <activity android:name=".ui.RecyclerActivity" />
         <activity android:name=".ui.FirstActivity" />
-        <activity android:name=".ui.GridActivity">
-        </activity>
+        <activity android:name=".ui.GridActivity"></activity>
         <activity android:name=".ui.TenthActivity">
+        </activity>
+        <activity android:name=".ui.TabViewPagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
