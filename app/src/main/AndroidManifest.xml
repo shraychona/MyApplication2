@@ -28,10 +28,11 @@
         <activity android:name=".ui.ListViewActivity" />
         <activity android:name=".ui.RecyclerActivity" />
         <activity android:name=".ui.FirstActivity" />
-        <activity android:name=".ui.GridActivity"></activity>
-        <activity android:name=".ui.TenthActivity">
-        </activity>
+        <activity android:name=".ui.GridActivity" />
+        <activity android:name=".ui.TenthActivity"></activity>
         <activity android:name=".ui.TabViewPagerActivity">
+        </activity>
+        <activity android:name=".ui.NavigationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
