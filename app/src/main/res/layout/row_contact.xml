@@ -35,7 +35,13 @@
             android:textColor="@android:color/black"
             android:hint="phone number"/>
 
-
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/IVEdit"
+        android:src="@drawable/ic_settings"/>
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.shray.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +11,8 @@ import android.widget.TextView;
 
 import com.shray.myapplication.R;
 import com.shray.myapplication.model.Contact;
+import com.shray.myapplication.ui.EditContactActivity;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +42,18 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Contact contact=contactList.get(position);
+        final Contact contact=contactList.get(position);
         holder.name.setText(contact.getName());
         holder.phoneNo.setText(contact.getPhoneNo());
-        Picasso.with(context).load(String.valueOf(contact.getDp())).into(holder.dp);
+        Picasso.with(context).load(R.drawable.ic_facebookcontact).resize(50,50).into(holder.dp);
+
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context, EditContactActivity.class);
+                intent.putExtra("key",contact.getKeyId());
+            }
+        });
 
     }
 
@@ -61,6 +69,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
         TextView phoneNo;
         @BindView(R.id.IVRowContactDP)
         ImageView dp;
+        @BindView(R.id.IVEdit) ImageView edit;
         public MyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);

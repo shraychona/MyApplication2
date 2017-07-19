@@ -8,38 +8,23 @@ import android.graphics.Bitmap;
 
 public class Contact {
     private String name,phoneNo;
-    private Bitmap dp;
+    private int dp;
     private int keyId;
 
-    public Contact(int keyId,String name, String phoneNo) {
-        this.name = name;
-        this.phoneNo = phoneNo;
-        this.keyId = keyId;
-    }
-
-    public Contact(String name, String phoneNo) {
-        this.name = name;
-        this.phoneNo = phoneNo;
-        this.keyId=1;
-        this.dp=null;
-    }
-
-    public Contact() {
-    }
-
-    public Contact(String name, String phoneNo, Bitmap dp) {
-
+    public Contact(int keyId,String name, String phoneNo, int dp) {
         this.name = name;
         this.phoneNo = phoneNo;
         this.dp = dp;
-    }
-
-    public int getKeyId() {
-        return keyId;
-    }
-
-    public void setKeyId(int keyId) {
         this.keyId = keyId;
+    }
+
+    public Contact( int keyId, String name, String phoneNo) {
+        this.name = name;
+        this.phoneNo = phoneNo;
+        this.keyId = keyId;
+    }
+
+    public Contact() {
     }
 
     public String getName() {
@@ -58,11 +43,19 @@ public class Contact {
         this.phoneNo = phoneNo;
     }
 
-    public Bitmap getDp() {
+    public int getDp() {
         return dp;
     }
 
-    public void setDp(Bitmap dp) {
+    public void setDp(int dp) {
         this.dp = dp;
+    }
+
+    public int getKeyId() {
+        return keyId;
+    }
+
+    public void setKeyId(int keyId) {
+        this.keyId = keyId;
     }
 }
