@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shray.myapplication">
 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -29,10 +32,11 @@
         <activity android:name=".ui.RecyclerActivity" />
         <activity android:name=".ui.FirstActivity" />
         <activity android:name=".ui.GridActivity" />
-        <activity android:name=".ui.TenthActivity"></activity>
-        <activity android:name=".ui.TabViewPagerActivity">
-        </activity>
+        <activity android:name=".ui.TenthActivity" />
+        <activity android:name=".ui.TabViewPagerActivity"></activity>
         <activity android:name=".ui.NavigationActivity">
+        </activity>
+        <activity android:name=".ui.ContactsFetchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
