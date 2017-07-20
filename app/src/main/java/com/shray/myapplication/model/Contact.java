@@ -8,19 +8,19 @@ import android.graphics.Bitmap;
 
 public class Contact {
     private String name,phoneNo;
-    private int dp;
+    private String dp;
     private int keyId;
 
-    public Contact(int keyId,String name, String phoneNo, int dp) {
+    public Contact(String name, String phoneNo, String dp) {
         this.name = name;
         this.phoneNo = phoneNo;
         this.dp = dp;
-        this.keyId = keyId;
     }
 
-    public Contact( int keyId, String name, String phoneNo) {
+    public Contact( int keyId, String name, String phoneNo, String dp) {
         this.name = name;
         this.phoneNo = phoneNo;
+        this.dp=dp;
         this.keyId = keyId;
     }
 
@@ -43,11 +43,11 @@ public class Contact {
         this.phoneNo = phoneNo;
     }
 
-    public int getDp() {
+    public String getDp() {
         return dp;
     }
 
-    public void setDp(int dp) {
+    public void setDp(String dp) {
         this.dp = dp;
     }
 

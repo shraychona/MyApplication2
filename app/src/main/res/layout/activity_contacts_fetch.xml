@@ -6,11 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/margin_eight"
+    android:background="@android:color/darker_gray"
     tools:context="com.shray.myapplication.ui.ContactsFetchActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add New Contact"
+        android:id="@+id/BtnAddContacts"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/BtnAddContacts"
         android:id="@+id/RVShowContacts"/>
 
 </RelativeLayout>

@@ -3,6 +3,7 @@
     package="com.shray.myapplication">
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".MyApplication"
@@ -33,7 +34,7 @@
         <activity android:name=".ui.GridActivity" />
         <activity android:name=".ui.TenthActivity" />
         <activity android:name=".ui.TabViewPagerActivity" />
-        <activity android:name=".ui.NavigationActivity"></activity>
+        <activity android:name=".ui.NavigationActivity" />
         <activity android:name=".ui.ContactsFetchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +42,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.EditContactActivity"></activity>
+        <activity android:name=".ui.EditContactActivity" />
+        <activity android:name=".ui.AddContactActivity"></activity>
     </application>
 
 </manifest>
