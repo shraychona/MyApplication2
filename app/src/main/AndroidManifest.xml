@@ -3,7 +3,7 @@
     package="com.shray.myapplication">
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApplication"
@@ -43,7 +43,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.EditContactActivity" />
-        <activity android:name=".ui.AddContactActivity"></activity>
+        <activity android:name=".ui.AddContactActivity" />
+        <activity android:name=".ui.ImageDownSizeActivity"></activity>
     </application>
 
 </manifest>

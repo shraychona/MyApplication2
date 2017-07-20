@@ -67,6 +67,13 @@ public class AddContactActivity extends BaseActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(AddContactActivity.this,ContactsFetchActivity.class));
+        finish();
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==IMAGE&&resultCode==RESULT_OK){

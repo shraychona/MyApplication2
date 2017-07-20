@@ -56,8 +56,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
                 Intent intent=new Intent(context, EditContactActivity.class);
                 intent.putExtra("key",contactList.get(position).getKeyId());
                 context.startActivity(intent);
-//                ((ContactsFetchActivity) context).finish();
-
+                ((ContactsFetchActivity) context).finish();
             }
         });
 

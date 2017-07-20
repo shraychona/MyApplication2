@@ -53,6 +53,7 @@ public class ContactsFetchActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ContactsFetchActivity.this,AddContactActivity.class));
+                finish();
             }
         });
 
