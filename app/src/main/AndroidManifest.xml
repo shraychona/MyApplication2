@@ -2,8 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shray.myapplication">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".MyApplication"
@@ -36,15 +48,16 @@
         <activity android:name=".ui.TabViewPagerActivity" />
         <activity android:name=".ui.NavigationActivity" />
         <activity android:name=".ui.ContactsFetchActivity">
+        </activity>
+        <activity android:name=".ui.EditContactActivity" />
+        <activity android:name=".ui.AddContactActivity" />
+        <activity android:name=".ui.ImageDownSizeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.EditContactActivity" />
-        <activity android:name=".ui.AddContactActivity" />
-        <activity android:name=".ui.ImageDownSizeActivity"></activity>
     </application>
 
 </manifest>
