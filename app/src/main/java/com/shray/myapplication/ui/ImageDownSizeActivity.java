@@ -1,14 +1,21 @@
 package com.shray.myapplication.ui;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.os.Bundle;
+import android.support.v4.content.FileProvider;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,27 +23,26 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.shray.myapplication.BaseActivity;
+import com.shray.myapplication.BuildConfig;
 import com.shray.myapplication.R;
 import com.shray.myapplication.helper.DownsizeImage;
+import com.shray.myapplication.helper.GeneralFunctions;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static junit.framework.Assert.assertEquals;
 
-public class ImageDownSizeActivity extends BaseActivity {
+public class ImageDownSizeActivity extends BaseActivity implements
+        DownsizeImage.SampledImageAsyncResp {
 
     private final static int CAM=1,GAL=2;
-    String imageFolderName;
-    File folderPath;
-    String imageName;
-    File imagePath;
-    Uri uri;
-
-    private File file;
+    private String picturePath, imagesDirectory;
+    private boolean isCameraOptionSelected;
 
     @BindView(R.id.IVImageDownSize) ImageView imageView;
     @BindView(R.id.BtnImagePick) Button BtnImagePicker;
@@ -59,7 +65,8 @@ public class ImageDownSizeActivity extends BaseActivity {
         BtnConvertImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                downSizeImage();
+                fetchImage();
+               // downSizeImage();
             }
         });
     }
@@ -67,7 +74,7 @@ public class ImageDownSizeActivity extends BaseActivity {
 
     public void fetchImage(){
 
-        createFolder();
+     //   createFolder();
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setItems(getResources().getStringArray(R.array.select_image), new DialogInterface.OnClickListener() {
             @Override
@@ -91,63 +98,78 @@ public class ImageDownSizeActivity extends BaseActivity {
     }
 
     private void galIntent() {
-        Intent intentImage=new Intent();
-        intentImage.setType("image/*");
-        intentImage.setAction(Intent.ACTION_PICK);
-        Intent chooserIntent=Intent.createChooser(intentImage,"Select profile via");
-        startActivityForResult(chooserIntent,GAL);
+        startActivityForResult(new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI), GAL);
     }
 
     private void camIntent() {
-        Intent intentCamera=new Intent();
-        intentCamera.setAction(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        imageName="Img"+System.currentTimeMillis()+".jpg";
-        imagePath=new File(folderPath,imageName);
-        intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imagePath));
-        startActivityForResult(intentCamera, CAM);
-    }
+        Intent takePictureIntent = new Intent(
+                MediaStore.ACTION_IMAGE_CAPTURE);
+        File file = null;
+        imagesDirectory=Environment.getExternalStorageDirectory().getAbsolutePath()+"/Sampled Images";
+        try {
+            file = GeneralFunctions.setUpImageFile(imagesDirectory);
+            picturePath = file.getAbsolutePath();
 
-    private void createFolder() {
-        imageFolderName= Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyApplication/downsampled images";
-        folderPath=new File(imageFolderName);
-        if (!folderPath.exists())
-        {
-            folderPath.mkdirs();
+            Uri outputUri = FileProvider
+                    .getUriForFile(this, BuildConfig.APPLICATION_ID , file);
+            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
+
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                takePictureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                ClipData clip = ClipData.newUri(getContentResolver(),
+                        "A photo", outputUri);
+
+                takePictureIntent.setClipData(clip);
+                takePictureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            } else {
+                List<ResolveInfo> resInfoList = getPackageManager()
+                        .queryIntentActivities(takePictureIntent,
+                                PackageManager.MATCH_DEFAULT_ONLY);
+
+                for (ResolveInfo resolveInfo : resInfoList) {
+                    String packageName = resolveInfo.activityInfo.packageName;
+                    grantUriPermission(packageName, outputUri,
+                            Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            picturePath = null;
         }
+        startActivityForResult(takePictureIntent, CAM);
     }
-
-    private void downSizeImage() {
-        Bitmap finalImage=DownsizeImage.decodeSampledBitmapFromFile(file,250,250);
-        imageView.setImageBitmap(finalImage);
-//        Picasso.with(ImageDownSizeActivity.this).load().into(imageView);
-
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case CAM:
-                if (resultCode==RESULT_OK){
-                    file = new File(folderPath, imageName);
-                    Picasso.with(ImageDownSizeActivity.this).load(file).into(imageView);
+        if (resultCode == RESULT_OK && (requestCode == GAL ||
+                requestCode == CAM)) {
+            boolean isGalleryImage = false;
+            if (requestCode == GAL) {
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                Cursor cursor = getContentResolver().query(selectedImage,
+                        filePathColumn, null, null, null);
+                cursor.moveToFirst();
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                picturePath = cursor.getString(columnIndex);
+                cursor.close();
+                isGalleryImage = true;
+            }
 
-                }
-                break;
-            case GAL:
-                if (resultCode==RESULT_OK){
-                    uri=data.getData();
-//
-//                    file = new File(folderPath, imageName);
-//                    File auxFile = new File(uri.getPath());
-//                    assertEquals(file.getAbsolutePath(), auxFile.getAbsolutePath());
-
-                    Picasso.with(ImageDownSizeActivity.this).load(uri).into(imageView);
-                }
-                break;
+            new DownsizeImage(this).execute(picturePath, imagesDirectory,
+                    String.valueOf(isGalleryImage),
+                    String.valueOf((int) getResources()
+                            .getDimension(R.dimen.image_downsample_size)));
         }
-
-
     }
+
+    @Override
+    public void onSampledImageAsyncPostExecute(File file) {
+        Picasso.with(this).load(file).into(imageView);
+    }
+
 }

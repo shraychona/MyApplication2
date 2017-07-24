@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">A Demo App</string>
     <string name="title_activity_display_message">CONTACT US</string>
     <string name="follow_us">Follow Us</string>
     <string name="say_hello">Say Hello!</string>
@@ -50,6 +50,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="openDrawer">open_drawer</string>
     <string name="closeDrawer">close_drawer</string>
+    <string name="processing_image">Processing Image</string>
 
     <string-array name="nav_item_activity_titles">
         <item>Home</item>
